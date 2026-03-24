@@ -1,0 +1,132 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>亚马逊每周热门选品报告</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <main class="container">
+    <header class="hero">
+      <p class="eyebrow">亚马逊每周选品</p>
+      <h1>亚马逊每周热门选品报告</h1>
+      <p class="subtitle">从机会分、风险和利润过滤中，快速锁定本周可上新的产品。</p>
+      <div class="actions">
+        <label class="btn" for="csvInput">上传新的排序 CSV</label>
+        <input id="csvInput" type="file" accept=".csv,text/csv" />
+        <button id="exportPdfBtn" class="btn" type="button">导出 PDF 报告</button>
+        <button id="resetBtn" class="btn ghost" type="button">恢复默认样例</button>
+      </div>
+      <p class="hint">支持字段：identifier, opportunity_score, passed_filter, rejection_reason 等。</p>
+    </header>
+
+    <section class="panel" id="filtersPanel">
+      <div class="panel-head">
+        <h2>筛选与搜索</h2>
+        <p id="filteredCount" class="panel-meta">已筛选：0/0（通过 0，淘汰 0）</p>
+      </div>
+      <div class="filters">
+        <label class="field">
+          <span>关键词</span>
+          <input id="searchInput" type="search" placeholder="产品名 / ASIN / 关键词" />
+        </label>
+
+        <label class="field">
+          <span>范围</span>
+          <select id="scopeSelect">
+            <option value="all">全部</option>
+            <option value="passed">通过</option>
+            <option value="rejected">淘汰</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>最低机会分</span>
+          <input id="minOppInput" type="number" step="0.01" min="0" placeholder="例如 50" />
+        </label>
+
+        <label class="field">
+          <span>价格最小</span>
+          <input id="priceMinInput" type="number" step="0.01" min="0" placeholder="例如 10" />
+        </label>
+
+        <label class="field">
+          <span>价格最大</span>
+          <input id="priceMaxInput" type="number" step="0.01" min="0" placeholder="例如 50" />
+        </label>
+
+        <label class="field">
+          <span>最低利润率 %</span>
+          <input id="minMarginInput" type="number" step="0.1" min="0" placeholder="例如 30" />
+        </label>
+
+        <div class="filter-actions">
+          <button id="clearFiltersBtn" class="btn ghost" type="button">清空筛选</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="snapshotPanel">
+      <h2>每周概览</h2>
+      <div id="snapshotGrid" class="snapshot-grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>高机会产品（前 10）</h2>
+      <div class="table-wrap">
+        <table id="topTable">
+          <thead>
+            <tr>
+              <th>产品</th>
+              <th class="sortable" data-sort="opportunity_score">机会分</th>
+              <th class="sortable" data-sort="monthly_sales">月销</th>
+              <th class="sortable" data-sort="price">价格</th>
+              <th class="sortable" data-sort="est_margin_pct">利润率</th>
+              <th class="sortable" data-sort="review_count">竞争</th>
+              <th>风险</th>
+            </tr>
+          </thead>
+          <tbody id="topBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>上新优先级（前 3）</h2>
+      <div id="priorityCards" class="card-grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>淘汰但热销（前 5）</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>产品</th>
+              <th>机会分</th>
+              <th>月销</th>
+              <th>淘汰原因</th>
+            </tr>
+          </thead>
+          <tbody id="rejectedBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>7 天行动计划</h2>
+      <ol class="plan-list">
+        <li>第 1-2 天： 核算落地成本（采购+头程+FBA）并验证最小起订量。</li>
+        <li>第 3-4 天： 检查竞品差异化，确定主图卖点与变体策略。</li>
+        <li>第 5-7 天： 准备小批量测试上新，跟踪 CTR、CVR 和 ACOS。</li>
+      </ol>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
