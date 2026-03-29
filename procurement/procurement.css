@@ -198,6 +198,67 @@ body::before {
   border-radius: var(--radius-lg);
 }
 
+.filter-panel {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+  padding: 24px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: var(--radius-xl);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.filter-panel h2 {
+  margin: 10px 0 8px;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.12;
+  font-family: Georgia, "Times New Roman", "Songti SC", serif;
+}
+
+.filter-panel p,
+.filter-count {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(250px, 1.1fr);
+  gap: 14px;
+  align-items: end;
+}
+
+.filter-field {
+  display: grid;
+  gap: 8px;
+}
+
+.filter-field span {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.filter-field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(27, 32, 40, 0.12);
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.filter-actions {
+  display: grid;
+  gap: 10px;
+}
+
 .overview-card strong {
   display: block;
   margin-bottom: 10px;
@@ -347,6 +408,21 @@ body::before {
 .offer-card {
   overflow: hidden;
   border-radius: 24px;
+}
+
+.offer-card[hidden],
+.sku-section[hidden] {
+  display: none !important;
+}
+
+.section-empty {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(27, 32, 40, 0.16);
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--ink-soft);
+  line-height: 1.7;
 }
 
 .card-media {
@@ -532,7 +608,8 @@ body::before {
 @media (max-width: 1200px) {
   .main-grid,
   .hero-grid,
-  .offer-grid {
+  .offer-grid,
+  .filter-grid {
     grid-template-columns: 1fr;
   }
 
@@ -548,7 +625,8 @@ body::before {
   }
 
   .hero,
-  .sku-section {
+  .sku-section,
+  .filter-panel {
     padding: 20px;
   }
 
