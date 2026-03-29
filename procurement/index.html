@@ -37,6 +37,52 @@
       </div>
     </section>
 
+    <section class="filter-panel">
+      <div class="filter-copy">
+        <span class="section-kicker">筛选视图</span>
+        <h2>按品牌、风格和推荐角色快速收窄范围</h2>
+        <p>你现在可以先缩到一个品牌，再切风格路线，最后只看主推 / 备选 / 对照样，减少来回滚动的成本。</p>
+      </div>
+      <div class="filter-grid">
+        <label class="filter-field">
+          <span>品牌</span>
+          <select id="brandFilter">
+            <option value="all">全部品牌</option>
+            <option value="toyota">Toyota</option>
+            <option value="honda">Honda</option>
+            <option value="ford">Ford</option>
+          </select>
+        </label>
+
+        <label class="filter-field">
+          <span>风格</span>
+          <select id="styleFilter">
+            <option value="all">全部风格</option>
+            <option value="gift">装饰礼品</option>
+            <option value="fitment">适配优先</option>
+            <option value="set">成套精品</option>
+            <option value="functional">中性功能</option>
+            <option value="female">女性装饰</option>
+          </select>
+        </label>
+
+        <label class="filter-field">
+          <span>推荐角色</span>
+          <select id="roleFilter">
+            <option value="all">全部角色</option>
+            <option value="main">主推</option>
+            <option value="backup">备选</option>
+            <option value="comparison">对照样</option>
+          </select>
+        </label>
+
+        <div class="filter-actions">
+          <button id="clearFilterBtn" class="btn btn-secondary" type="button">清空筛选</button>
+          <p id="filterCount" class="filter-count">当前显示 8 / 8 个供应商卡片</p>
+        </div>
+      </div>
+    </section>
+
     <div class="main-grid">
       <aside class="side-rail">
         <section class="aside-panel">
@@ -76,7 +122,7 @@
           </header>
 
           <div class="offer-grid">
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="toyota" data-style="gift" data-role="main">
               <div class="card-media">
                 <img src="./assets/boyi-a1.jpg" alt="Toyota 装饰款主推商品图" loading="lazy" />
                 <div class="media-overlay">
@@ -121,7 +167,7 @@
               </div>
             </article>
 
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="toyota" data-style="gift" data-role="backup">
               <div class="card-media">
                 <img src="./assets/yanjin-a1.jpg" alt="Toyota 装饰款备选商品图" loading="lazy" />
                 <div class="media-overlay">
@@ -183,7 +229,7 @@
           </header>
 
           <div class="offer-grid">
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="honda" data-style="fitment" data-role="main">
               <div class="card-media">
                 <img src="./assets/yanjin-b1.jpg" alt="Honda 新 Slim 主推商品图" loading="lazy" />
                 <div class="media-overlay">
@@ -228,7 +274,7 @@
               </div>
             </article>
 
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="honda" data-style="set" data-role="backup">
               <div class="card-media">
                 <img src="./assets/weishite-b1.jpg" alt="Honda 新 Slim 备选商品图" loading="lazy" />
                 <div class="media-overlay">
@@ -290,7 +336,7 @@
           </header>
 
           <div class="offer-grid">
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="ford" data-style="functional" data-role="main">
               <div class="card-media">
                 <img src="./assets/yanjin-c1.jpg" alt="Ford 中性款主推商品图" loading="lazy" />
                 <div class="media-overlay">
@@ -335,7 +381,7 @@
               </div>
             </article>
 
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="ford" data-style="functional" data-role="comparison">
               <div class="card-media">
                 <img src="./assets/mebooming-c1.jpg" alt="Ford 中性款成本锚点商品图" loading="lazy" />
                 <div class="media-overlay">
@@ -397,7 +443,7 @@
           </header>
 
           <div class="offer-grid">
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="ford" data-style="female" data-role="main">
               <div class="card-media">
                 <img src="./assets/remai-c2.jpg" alt="Ford 女性装饰款主推商品图" loading="lazy" />
                 <div class="media-overlay">
@@ -442,7 +488,7 @@
               </div>
             </article>
 
-            <article class="offer-card">
+            <article class="offer-card" data-offer-card data-brand="ford" data-style="female" data-role="backup">
               <div class="card-media">
                 <img src="./assets/yhc-c2.jpg" alt="Ford 女性装饰款备选商品图" loading="lazy" />
                 <div class="media-overlay">
